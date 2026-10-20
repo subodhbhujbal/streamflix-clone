@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="StreamFlix — a responsive streaming platform UI demo.">
+  <title>StreamFlix — Watch Something Great</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="StreamFlix home"><span class="brand-mark">S</span> STREAMFLIX</a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a class="active" href="#home">Home</a><a href="#trending">Series</a><a href="#movies">Movies</a><a href="#my-list">My List</a>
+    </nav>
+    <div class="top-actions">
+      <label class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search titles..." aria-label="Search titles"></label>
+      <button class="avatar" id="profileButton" aria-label="Profile">S</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-backdrop"></div>
+      <div class="hero-content">
+        <p class="eyebrow"><span class="live-dot"></span> STREAMFLIX ORIGINAL</p>
+        <p class="hero-kicker">A NEW SERIES</p>
+        <h1>THE LAST<br><span>FRONTIER</span></h1>
+        <div class="hero-meta"><span class="match">98% Match</span><span>2026</span><span class="rating">16+</span><span>1 Season</span><span class="uhd">4K UHD</span></div>
+        <p class="hero-description">At the edge of the known world, one crew discovers that the greatest threat isn't out there — it's what they brought back.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary" id="heroPlay"><span>▶</span> Play</button>
+          <button class="btn btn-secondary" id="heroInfo"><span>ⓘ</span> More Info</button>
+        </div>
+      </div>
+      <div class="hero-bottom"><span>Featured today</span><div class="hero-dots"><i class="selected"></i><i></i><i></i><i></i></div></div>
+      <div class="age-card">16+</div>
+    </section>
+
+    <section class="content-section" id="trending">
+      <div class="section-heading"><div><p class="section-overline">WHAT EVERYONE'S WATCHING</p><h2>Trending Now</h2></div><a href="#movies" class="view-all">Explore all <span>↗</span></a></div>
+      <div class="poster-row" id="trendingRow"></div>
+    </section>
+
+    <section class="content-section" id="movies">
+      <div class="section-heading"><div><p class="section-overline">HANDPICKED FOR YOU</p><h2>Popular on StreamFlix</h2></div>
+        <select id="genreFilter" aria-label="Filter by genre"><option value="All">All genres</option><option>Action</option><option>Drama</option><option>Sci-Fi</option><option>Thriller</option><option>Comedy</option></select>
+      </div>
+      <div class="poster-grid" id="popularGrid"></div>
+      <p class="empty-state" id="emptyState" hidden>No titles found. Try another search or genre.</p>
+    </section>
+
+    <section class="content-section continue-section">
+      <div class="section-heading"><div><p class="section-overline">PICK UP WHERE YOU LEFT OFF</p><h2>Continue Watching</h2></div></div>
+      <div class="continue-row">
+        <article class="continue-card" style="--progress:64%"><div class="continue-image image-one"><button class="round-play" aria-label="Play City of Echoes">▶</button></div><div class="progress"><span></span></div><div class="continue-info"><div><h3>City of Echoes</h3><p>S1:E4 · The Other Side</p></div><button class="more-button" aria-label="More options">•••</button></div></article>
+        <article class="continue-card" style="--progress:28%"><div class="continue-image image-two"><button class="round-play" aria-label="Play Blue Horizon">▶</button></div><div class="progress"><span></span></div><div class="continue-info"><div><h3>Blue Horizon</h3><p>S1:E2 · Into the Deep</p></div><button class="more-button" aria-label="More options">•••</button></div></article>
+        <article class="continue-card" style="--progress:82%"><div class="continue-image image-three"><button class="round-play" aria-label="Play Night Shift">▶</button></div><div class="progress"><span></span></div><div class="continue-info"><div><h3>Night Shift</h3><p>S2:E7 · No Way Out</p></div><button class="more-button" aria-label="More options">•••</button></div></article>
+      </div>
+    </section>
+
+    <section class="my-list-section" id="my-list">
+      <div><p class="section-overline">YOUR PERSONAL COLLECTION</p><h2>My List <span id="listCount" class="count-pill">0</span></h2><p class="list-subtitle">Titles you saved for later, all in one place.</p></div>
+      <div class="poster-row" id="myListRow"><p class="list-empty">Your list is empty for now. Tap the + on a title to save it here.</p></div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">S</span> STREAMFLIX</a><p>A frontend demo project. No affiliation with Netflix or any streaming service.</p><div class="footer-links"><a href="#home">Back to top ↑</a><a href="#movies">Browse titles</a><a href="README.md">Project info</a></div><small>© 2026 StreamFlix Demo</small></footer>
+
+  <dialog id="titleDialog" class="title-dialog">
+    <button class="dialog-close" id="dialogClose" aria-label="Close">×</button>
+    <div id="dialogBackdrop" class="dialog-backdrop"></div>
+    <div class="dialog-content"><p class="section-overline">STREAMFLIX TITLE</p><h2 id="dialogTitle">Title</h2><div class="hero-meta" id="dialogMeta"></div><p id="dialogDescription"></p><div class="dialog-actions"><button class="btn btn-primary" id="dialogPlay">▶ Play trailer</button><button class="btn btn-secondary" id="dialogSave">＋ My List</button></div><p class="demo-note">Demo interaction — no video playback is connected.</p></div>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
